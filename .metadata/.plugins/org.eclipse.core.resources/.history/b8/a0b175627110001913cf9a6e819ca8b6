@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class PigLatin {
+
+	public static void main(String[] args) {
+		//User's string  
+		String stringEntered; 
+		
+	    
+	    Scanner reader = new Scanner(System.in); 
+	    
+	    System.out.println("Hello, this is your Pig Latin translator:");
+	    
+	    System.out.println();
+	    
+	     //Get user's string from input
+	     System.out.println("Enter your string: "); 
+	     stringEntered = reader.next();
+	     reader.close();
+	     
+		 writeUserString(stringEntered);
+	     
+	     
+	     
+
+	}
+
+	 public static void writeUserString(String stringEntered) {
+		 
+		 //Print Player's play
+		 System.out.println("Your string is: " + stringEntered);
+	    }
+}
