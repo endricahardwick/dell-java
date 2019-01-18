@@ -15,7 +15,6 @@ public class GradeBook {
 		System.out.println("Hello!");
 		System.out.println("Please enter the number of students:");
 		int numberOfStudents = Integer.parseInt(reader.nextLine());
-//		reader.close();
 
 		System.out.println("You entered: " + numberOfStudents);
 
@@ -24,7 +23,6 @@ public class GradeBook {
 
 			System.out.println();
 			System.out.println("Please enter student's " + (i + 1) + " name:");
-//			Scanner reader = new Scanner(System.in);
 			String studentName = reader.nextLine();
 
 			System.out.println();
