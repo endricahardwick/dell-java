@@ -25,7 +25,7 @@ public class Statistics {
 		// The split method splits up the string based on the position of the commas.
 		// The substrings are placed into an array.
 		String[] numberListArray = numbersEntered.split(",");
-		int[] converted = new int[numberListArray.length];
+		Double[] converted = new Double[numberListArray.length];
 
 		// Print user's numbers
 		System.out.println();	
@@ -34,7 +34,7 @@ public class Statistics {
 		// convert string to number
 		// print each item
 		for (int i = 0; i < converted.length; i++) {
-			converted[i] = Integer.parseInt(numberListArray[i]);
+			converted[i] = Double.parseDouble(numberListArray[i]);
 			System.out.println(numberListArray[i]);
 		}
 
@@ -46,15 +46,15 @@ public class Statistics {
 		writeSum(converted);
 	}
 
-	public static void writeMinNumber(int[] converted) {
+	public static void writeMinNumber(Double[] converted) {
 
-		int currentMin = converted[0];
+		Double currentMin = converted[0];
 		
 		for (int i = 1; i < converted.length; i++) {
 			if (converted[i] < currentMin) {
 				currentMin = converted [i];
 	
-				break;
+//				break;
 			}
 
 		}
@@ -62,15 +62,15 @@ public class Statistics {
 		System.out.println("The minimum number is: " + currentMin);
 	}
 	
-	public static void writeMaxNumber(int[] converted) {
+	public static void writeMaxNumber(Double[] converted) {
 
-		int currentMax = converted[0];
+		Double currentMax = converted[0];
 		
 		for (int i = 1; i < converted.length; i++) {
 			if (converted[i] > currentMax) {
 				currentMax = converted [i];
 	
-				break;
+//				break;
 			}
 
 		}
@@ -78,7 +78,7 @@ public class Statistics {
 		System.out.println("The maximum number is: " + currentMax);
 	}
 	
-	public static void writeElementNumber(int[] converted) {
+	public static void writeElementNumber(Double[] converted) {
 
 		int elements = converted.length;
 
@@ -86,10 +86,10 @@ public class Statistics {
 		System.out.println("The number of elements is: " + elements);
 	}
 	
-	public static void writeAverage(int[] converted) {
+	public static void writeAverage(Double[] converted) {
 
-		int sum = 0;
-		int average = 0;
+		Double sum = 0.0;
+		Double average = 0.0;
 		
 		for (int i = 0; i < converted.length; i++) {
 				sum = sum + converted[i];
@@ -101,9 +101,9 @@ public class Statistics {
 		System.out.println("The average is: " + average);
 	}
 	
-	public static void writeSum(int[] converted) {
+	public static void writeSum(Double[] converted) {
 
-		int sum = 0;
+		Double sum = 0.0;
 		
 		for (int i = 0; i < converted.length; i++) {
 				sum = sum + converted[i];
