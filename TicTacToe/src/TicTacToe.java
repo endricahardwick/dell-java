@@ -156,7 +156,10 @@ public static void printBoard(char[][] board) {
 		if (win(diagonal)) {
 			return true;
 		}
-		row = board[0].length - 1;
+
+//		Fixed this section of the code by initializing row and col...it now catches (2,0),(1,1),(0,2) diagonal
+		row = row -1; 
+		col = 0;
 		diagonal = new char[size];
 		while (row >= 0 && col < board.length) {
 			diagonal[col] = board[row][col];
