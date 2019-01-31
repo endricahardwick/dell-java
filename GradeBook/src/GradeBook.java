@@ -53,8 +53,11 @@ public class GradeBook {
 
 	public static void writeAverage(String listGrades) {
 
-		int sum = 0;
-		int average = 0;
+//		int sum = 0;
+//		int average = 0;
+//		Changed variable from int to Double to provide decimal place values
+		Double sum = 0.0;
+		Double average = 0.0;
 
 		// The split method splits up the string based on the position of the commas.
 		// The substrings are placed into an array.
