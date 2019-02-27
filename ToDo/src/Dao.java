@@ -46,9 +46,19 @@ public class Dao {
 //	The user should be able to delete an item from their list of to-do's
 	public void delete(int id) {
 
-
-		listOfToDoItems.remove(id);
+		int index;
+		
+		for (ToDoItem item : listOfToDoItems) {
+			int itemId;
+			itemId = item.getId();
+			if (itemId == id) {
+				index = listOfToDoItems.indexOf(item);
+				listOfToDoItems.remove(index);
+				break;
+			}
+		}
 		System.out.println("[Item deleted]");
+	
 	}
 
 // Method to list the list
