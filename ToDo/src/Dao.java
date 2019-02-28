@@ -47,7 +47,9 @@ public class Dao {
 	public void delete(int id) {
 
 		int index;
-		
+
+//		pass the user selected id into this method. 
+//		loop through the items in the array to find index of item and when found delete.
 		for (ToDoItem item : listOfToDoItems) {
 			int itemId;
 			itemId = item.getId();
@@ -58,7 +60,7 @@ public class Dao {
 			}
 		}
 		System.out.println("[Item deleted]");
-	
+
 	}
 
 // Method to list the list
@@ -68,47 +70,61 @@ public class Dao {
 		String pstatus = "pending";
 		String dstatus = "done";
 
-		System.out.println("in List Method");
+		int longestDescription = 11;
 
-		System.out.println(" ID | " + " Description | " + " Status");
-		System.out.println("----+-" + "-------------+-" + "--------");
+//		set a length for the description title and check if description is longer than title.
+//		This allows for flexibility of length for the description column
+		for (ToDoItem entry : listOfToDoItems) {
+			if (entry.getDescription().length() > longestDescription) {
+				longestDescription = entry.getDescription().length();
+			}
+		}
 
-		for (int i = 0; i < listOfToDoItems.size(); i++) {
-			
+//		set the header format
+		String descriptionHeader = String.format("%" + longestDescription + "s", "Description");
+		String descriptionUnderline = "";
+		for (int i = 0; i < longestDescription; i++) {
+			descriptionUnderline += "-";
+		}
+
+//		print header with set format
+		System.out.println(" ID | " + descriptionHeader + " | Status");
+		System.out.println("----+-" + descriptionUnderline + "-+-------");
+
+		for (ToDoItem entry : listOfToDoItems) {
+			String description = String.format("%-" + longestDescription + "s", entry.getDescription());
+
 //			list only items that are pending.
 			if (status.equals("pending")) {
-				if (listOfToDoItems.get(i).getCompleted() == false) {
-					System.out.println("  " + listOfToDoItems.get(i).getId() + " | "
-							+ listOfToDoItems.get(i).getDescription() + " | " + status);
+				if (entry.getCompleted() == false) {
+					String line = String.format(" %2s | %s | %s ", entry.getId(), description, status);
+					System.out.println(line);
 				}
 			} else
 
 //			list only items that have been done.
 			if (status.equals("done")) {
-				if (listOfToDoItems.get(i).getCompleted() != false) {
-					System.out.println("  " + listOfToDoItems.get(i).getId() + " | "
-							+ listOfToDoItems.get(i).getDescription() + " | " + status);
-
+				if (entry.getCompleted() != false) {
+					String line = String.format(" %2s | %s | %s ", entry.getId(), description, status);
+					System.out.println(line);
 				}
 			}
 
 //			list all items, both completed and pending.
 			if (status.equals("all")) {
-				for (i = 0; i < listOfToDoItems.size(); i++) {
-					if (listOfToDoItems.get(i).getCompleted() == false) {
-						pstatus = "pending";
-						System.out.println("  " + listOfToDoItems.get(i).getId() + " | "
-								+ listOfToDoItems.get(i).getDescription() + " | " + pstatus);
-					}
-					if (listOfToDoItems.get(i).getCompleted() != false) {
-						dstatus = "done";
-						System.out.println("  " + listOfToDoItems.get(i).getId() + " | "
-								+ listOfToDoItems.get(i).getDescription() + " | " + dstatus);
 
-					}
+				if (entry.getCompleted() == false) {
+					pstatus = "pending";
+					String line = String.format(" %2s | %s | %s ", entry.getId(), description, pstatus);
+					System.out.println(line);
+				}
+				if (entry.getCompleted() != false) {
+					dstatus = "done";
+					String line = String.format(" %2s | %s | %s ", entry.getId(), description, dstatus);
+					System.out.println(line);
+
 				}
 			}
 		}
 	}
-
 }
